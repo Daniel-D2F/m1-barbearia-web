@@ -71,14 +71,16 @@ function criaPedido(nomeCliente, corteId, barbaId) {
 }
 
 function atualizarServico(lista, id, valor, tipo) {
-  if (lista == "Cortes") {
-    buscaCortePorId(id).valor = valor;
-    buscaCortePorId(id).tipo = tipo;
-    return barbearia.cortes;
-  } else {
-    buscaBarbaPorId(id).valor = valor;
-    buscaBarbaPorId(id).tipo = tipo;
-    return barbearia.barbas;
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i].id == id) {
+      buscaCortePorId(id).valor = valor;
+      buscaCortePorId(id).tipo = tipo;
+      return barbearia.cortes
+    } else {
+      buscaBarbaPorId(id).valor = valor;
+      buscaBarbaPorId(id).tipo = tipo;
+      return barbearia.barbas
+    }
   }
 }
 
